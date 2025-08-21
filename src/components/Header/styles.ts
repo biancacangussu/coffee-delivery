@@ -18,7 +18,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
 
-    > img {
+    img {
       max-width: 300px;
       max-height: 70px;
     }

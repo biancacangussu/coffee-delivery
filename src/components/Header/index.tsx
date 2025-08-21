@@ -1,12 +1,19 @@
-import { HeaderButton, HeaderButtonsContainer, HeaderContainer } from "./styles";
+import {
+  HeaderButton,
+  HeaderButtonsContainer,
+  HeaderContainer,
+} from "./styles";
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { NavLink } from "react-router-dom";
 import coffeeLogoImg from "../../assets/logo.webp";
 
 export function Header() {
   return (
-    <HeaderContainer >
+    <HeaderContainer>
       <div className="container">
-        <img src={coffeeLogoImg} />
+        <NavLink to="/">
+          <img src={coffeeLogoImg} />
+        </NavLink>
 
         <HeaderButtonsContainer>
           <HeaderButton variant="purple">
@@ -14,9 +21,11 @@ export function Header() {
             Vinhedo, SP
           </HeaderButton>
 
-          <HeaderButton variant="yellow">
-            <ShoppingCart size={20} weight="fill"/>
-          </HeaderButton>
+          <NavLink to="/completeOrder">
+            <HeaderButton variant="yellow">
+              <ShoppingCart size={20} weight="fill" />
+            </HeaderButton>
+          </NavLink>
         </HeaderButtonsContainer>
       </div>
     </HeaderContainer>
