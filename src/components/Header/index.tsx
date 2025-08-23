@@ -5,8 +5,8 @@ import {
 } from "./styles";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { NavLink } from "react-router-dom";
-import coffeeLogoImg from "../../assets/logo.webp";
 import { useCart } from "../../hooks/useCart";
+import coffeeLogoImg from "../../assets/logo.webp";
 
 export function Header() {
   const { cartQuantity } = useCart();
