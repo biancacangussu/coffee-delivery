@@ -4,7 +4,9 @@ import { SelectedCoffees } from "./components/SelectedCoffees";
 import { CompleteOrderContainer } from "./styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider } from "react-hook-form";
+import { useCart } from "../../hooks/useCart";
 import * as zod from "zod";
+
 
 enum PaymentMethods {
   credit = "credit",
@@ -34,16 +36,21 @@ type ConfirmOrderFormData = OrderData;
 export function CompleteOrderPage() {
   const confirmOrderForm = useForm<ConfirmOrderFormData>({
     resolver: zodResolver(confirmOrderFormValidationSchema),
+    defaultValues: {
+      paymentMethod: undefined,
+    },
   });
 
   const { handleSubmit } = confirmOrderForm;
 
   const navigate = useNavigate();
+  const { cleanCart } = useCart();
 
   function handleConfirmOrder(data: ConfirmOrderFormData) {
     navigate("/orderConfirmed", {
       state: data,
     });
+    cleanCart();
   }
 
   return (
