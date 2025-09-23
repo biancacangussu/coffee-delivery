@@ -26,13 +26,23 @@ interface CoffeeProps {
   coffee: Coffee;
 }
 
+export interface OrderItem {
+  coffeeId: number;
+  quantity: number;
+}
+
+// Este é o formato que fica no carrinho local
+export interface CartItem extends Coffee {
+  quantity: number;
+}
+
 export function CoffeeCard({ coffee }: CoffeeProps) {
   const [quantity, setQuantity] = useState(1);
   const formattedPrice = formatMoney(coffee.price);
   const { addCoffeeToCart } = useCart();
 
   function handleAddToCart() {
-    const coffeeToAdd = {
+    const coffeeToAdd: CartItem = {
       ...coffee,
       quantity,
     };
@@ -40,11 +50,11 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
   }
 
   function handleIncrease() {
-    setQuantity(state => state + 1);
+    setQuantity((state) => state + 1);
   }
 
-    function handleDecrease() {
-    setQuantity(state => state - 1);
+  function handleDecrease() {
+    setQuantity((state) => (state > 1 ? state - 1 : 1));
   }
 
   return (

@@ -17,6 +17,7 @@ export const defaultTheme = {
     "brand-yellow-dark": "#C47F17",
     "brand-yellow": "#DBAC2C",
     "brand-yellow-light": "#F1E9C9",
+    "brand-green-light": "#25D366"
   },
   textSizes: {
     "title-title-xl": "3rem",

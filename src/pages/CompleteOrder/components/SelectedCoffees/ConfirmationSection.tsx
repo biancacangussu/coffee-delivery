@@ -1,18 +1,36 @@
 import { Button } from "../../../../components/Button";
 import { RegularText } from "../../../../components/Typography";
 import { useCart } from "../../../../hooks/useCart";
+import { orderItem } from "../../../../services/orderItem";
 import { formatMoney } from "../../../../utils/formatMoney";
 import { ConfirmationSectionContainer } from "./styles";
 
 const DELIVERY_PRICE = 3.5;
 
 export function ConfirmationSection() {
-  const { cartItemsTotal, cartQuantity } = useCart();
+  const { cartItemsTotal, cartQuantity, cleanCart, cartItems } = useCart();
   const cartTotal = DELIVERY_PRICE + cartItemsTotal;
 
   const formattedItemsTotal = formatMoney(cartItemsTotal);
   const formattedCartTotal = formatMoney(cartTotal);
   const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE);
+
+  const handleConfirmOrder = async () => {
+    if (cartQuantity === 0) return;
+
+    const orderItems = cartItems.map((item) => ({
+      coffeeId: item.id,
+      quantity: item.quantity,
+    }));
+
+    const result = await orderItem(orderItems);
+    if (result) {
+      alert("Pedido confirmado!");
+      cleanCart();
+    } else {
+      alert("Ocorreu um erro ao confirmar o pedido.");
+    }
+  };
 
   return (
     <ConfirmationSectionContainer>
@@ -35,7 +53,12 @@ export function ConfirmationSection() {
         </RegularText>
       </div>
 
-      <Button text="Confirmar Pedido" disabled={cartQuantity <= 0} type="submit" />
+      <Button
+        text="Confirmar Pedido"
+        disabled={cartQuantity <= 0}
+        onClick={handleConfirmOrder}
+        type="submit"
+      />
     </ConfirmationSectionContainer>
   );
 }
