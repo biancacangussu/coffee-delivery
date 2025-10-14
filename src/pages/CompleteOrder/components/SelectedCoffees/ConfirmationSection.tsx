@@ -25,7 +25,6 @@ export function ConfirmationSection() {
 
     const result = await orderItem(orderItems);
     if (result) {
-      alert("Pedido confirmado!");
       cleanCart();
     } else {
       alert("Ocorreu um erro ao confirmar o pedido.");
