@@ -1,3 +1,4 @@
+import { useFormContext } from "react-hook-form";
 import { Button } from "../../../../components/Button";
 import { RegularText } from "../../../../components/Typography";
 import { useCart } from "../../../../hooks/useCart";
@@ -8,6 +9,9 @@ import { ConfirmationSectionContainer } from "./styles";
 const DELIVERY_PRICE = 3.5;
 
 export function ConfirmationSection() {
+  const { formState } = useFormContext();
+  const isSubmitDisabled = !formState.isValid;
+
   const { cartItemsTotal, cartQuantity, cleanCart, cartItems } = useCart();
   const cartTotal = DELIVERY_PRICE + cartItemsTotal;
 
@@ -54,7 +58,7 @@ export function ConfirmationSection() {
 
       <Button
         text="Confirmar Pedido"
-        disabled={cartQuantity <= 0}
+        disabled={cartQuantity <= 0 || isSubmitDisabled}
         onClick={handleConfirmOrder}
         type="submit"
       />

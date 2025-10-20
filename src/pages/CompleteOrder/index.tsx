@@ -7,7 +7,6 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useCart } from "../../hooks/useCart";
 import * as zod from "zod";
 
-
 enum PaymentMethods {
   credit = "credit",
   debit = "debit",
