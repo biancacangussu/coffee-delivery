@@ -9,9 +9,11 @@ import { RegularText } from "../../../../components/Typography";
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { useTheme } from "styled-components";
+import useMobile from "../../../../utils/isMobile";
 
 export function Intro() {
   const { colors } = useTheme();
+  const isMobile = useMobile();
   
   return (
     <IntroContainer>
@@ -51,7 +53,7 @@ export function Intro() {
           </BenefitsContainer>
         </div>
 
-        <img src={introImg} />
+        {!isMobile && <img src={introImg} />}
       </IntroContent>
     </IntroContainer>
   );
