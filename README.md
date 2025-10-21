@@ -14,7 +14,7 @@ O **Coffee Delivery** é uma aplicação web onde o usuário pode:
 - Selecionar a forma de pagamento;
 - Finalizar o pedido e ver a página de confirmação.
 
-Foi desenvolvido aplicando conceitos de gerenciamento de estado, validação de formulários e boas práticas de componentização
+Foi desenvolvido aplicando conceitos de gerenciamento de estado, validação de formulários e boas práticas de componentização.
 
 ## Tecnologias e bibliotecas
 
