@@ -1,69 +1,33 @@
-# React + TypeScript + Vite
+# ☕ Coffee Delivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <em>Uma aplicação para amantes de café! Escolha seus cafés preferidos, adicione ao carrinho e finalize o pedido com endereço e forma de pagamento.</em>
+</p>
 
-Currently, two official plugins are available:
+## Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O **Coffee Delivery** é uma aplicação web onde o usuário pode:
+- Visualizar uma lista de cafés disponíveis;
+- Adicionar e remover cafés do carrinho;
+- Ver o total do pedido atualizado dinamicamente;
+- Preencher o endereço de entrega;
+- Selecionar a forma de pagamento;
+- Finalizar o pedido e ver a página de confirmação.
 
-## Expanding the ESLint configuration
+Foi desenvolvido aplicando conceitos de gerenciamento de estado, validação de formulários e boas práticas de componentização
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias e bibliotecas
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Este projeto foi construído com as seguintes tecnologias:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Categoria | Tecnologias |
+|------------|--------------|
+| **Frontend** | [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
+| **Roteamento** | [React Router DOM](https://reactrouter.com/) |
+| **Estilização** | [Styled Components](https://styled-components.com/) + [Polished](https://polished.js.org/) |
+| **Formulários** | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) + [@hookform/resolvers](https://react-hook-form.com/api/useform/#resolver) |
+| **Ícones** | [Phosphor React](https://phosphoricons.com/) |
+| **Gerenciamento de estado** | [Immer](https://immerjs.github.io/immer/) |
+| **HTTP Client** | [Axios](https://axios-http.com/) |
+| **Ambiente de desenvolvimento** | [Vite](https://vitejs.dev/) |
+| **Linting & Tipagem** | ESLint + TypeScript + TypeScript-ESLint |
