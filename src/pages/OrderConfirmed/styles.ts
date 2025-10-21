@@ -15,6 +15,10 @@ export const OrderConfirmedContainer = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+  
+  @media screen and (max-width: 1368px) {
+    align-items: center;
+  }
 `;
 
 export const OrderDetailsContainer = styled.div`

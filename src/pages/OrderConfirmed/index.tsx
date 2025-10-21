@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { type OrderData } from "../CompleteOrder";
 import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions";
 import { useEffect } from "react";
+import useMobile from "../../utils/isMobile";
 
 interface LocationType {
   state: OrderData;
@@ -15,10 +16,9 @@ interface LocationType {
 
 export function OrderConfirmedPage() {
   const { colors } = useTheme();
-
   const { state } = useLocation() as unknown as LocationType;
-
   const navigate = useNavigate();
+  const isMobile = useMobile();
 
   useEffect(() => {
     if (!state) {
@@ -75,7 +75,7 @@ export function OrderConfirmedPage() {
             }
           />
         </OrderDetailsContainer>
-        <img src={confirmedOrderIllustration} />
+        {!isMobile && <img src={confirmedOrderIllustration} />}
       </section>
     </OrderConfirmedContainer>
   );

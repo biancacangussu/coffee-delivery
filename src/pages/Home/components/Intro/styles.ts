@@ -8,7 +8,8 @@ export const IntroContainer = styled.section`
   width: 100%;
   height: 34rem;
 
-  background: ${({ theme }) => `url(${introBackgroundImg}) no-repeat center,
+  @media screen and (min-width: 1130px) {
+    background: ${({ theme }) => `url(${introBackgroundImg}) no-repeat center,
       linear-gradient(
         0deg,
         ${theme.colors["base-white"]} 0%,
@@ -16,6 +17,7 @@ export const IntroContainer = styled.section`
         ${theme.colors["base-background"]} 100%
       )`};
   background-size: cover;
+  }
 
   display: flex;
   align-items: center;
