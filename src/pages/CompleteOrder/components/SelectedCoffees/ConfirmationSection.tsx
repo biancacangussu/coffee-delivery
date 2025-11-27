@@ -9,7 +9,7 @@ import { ConfirmationSectionContainer } from "./styles";
 const DELIVERY_PRICE = 3.5;
 
 export function ConfirmationSection() {
-  const { formState } = useFormContext();
+  const { formState, getValues } = useFormContext();
   const isSubmitDisabled = !formState.isValid;
 
   const { cartItemsTotal, cartQuantity, cleanCart, cartItems } = useCart();
@@ -22,12 +22,21 @@ export function ConfirmationSection() {
   const handleConfirmOrder = async () => {
     if (cartQuantity === 0) return;
 
+    const form = getValues();
+
     const orderItems = cartItems.map((item) => ({
       coffeeId: item.id,
       quantity: item.quantity,
     }));
 
-    const result = await orderItem(orderItems);
+    const order = {
+      address: `${form.street}, ${form.number}, ${form.district} - ${form.city}/${form.uf}`,
+      paymentMethod: form.paymentMethod,
+      items: orderItems,
+    };
+
+    const result = await orderItem(order);
+
     if (result) {
       cleanCart();
     } else {

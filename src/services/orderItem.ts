@@ -1,9 +1,17 @@
 import { api } from "../lib/axios";
-import type { OrderItem } from "../pages/Home/components/CoffeeCard";
 
-export async function orderItem(cartItems: OrderItem[]): Promise<OrderItem[] | null> {
+export interface OrderPayload {
+  address: string;
+  paymentMethod: string;
+  items: {
+    coffeeId: number;
+    quantity: number;
+  }[];
+}
+
+export async function orderItem(order: OrderPayload) {
   try {
-    const response = await api.post<OrderItem[]>("/orders", { items: cartItems });
+    const response = await api.post("/orders", order);
     return response.data;
   } catch (error) {
     console.error("Erro ao enviar pedido:", error);
